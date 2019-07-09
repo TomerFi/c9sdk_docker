@@ -14,7 +14,7 @@ display_no_docker_engine() {
 
 display_usage() {
     echo -e "please provide the operation you want to execute.\n"
-    echo "usage: $0 lint-dockerfile"
+    echo "usage: $0 lint-dockerfiles"
     echo "usage: $0 check-shellscripts"
     echo "usage: $0 circleci-validate"
 }
@@ -26,9 +26,10 @@ then
         display_usage
         exit 1
     else
-      if [ "$1" = "lint-dockerfile" ]
+      if [ "$1" = "lint-dockerfiles" ]
       then
-        docker run --rm -i hadolint/hadolint:v1.16.3 < Dockerfile
+        docker run --rm -i hadolint/hadolint:v1.16.3 < amd64/Dockerfile
+        docker run --rm -i hadolint/hadolint:v1.16.3 < armhf/Dockerfile
       elif [ "$1" = "check-shellscripts" ]
       then
         # shellcheck disable=SC2046
