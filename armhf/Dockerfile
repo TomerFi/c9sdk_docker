@@ -45,4 +45,4 @@ ENV C9USER="c9user" C9PASSWORD="c9password"
 ENTRYPOINT ["/bin/sh", "-c", "node /opt/c9sdk/server.js -p 8080 -w /workspace/ -l 0.0.0.0 -a $C9USER:$C9PASSWORD"]
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=20s --retries=3 \
-CMD ["/bin/sh", "-c",  "if [ $$(curl -L -o /dev/null -s -w %{http_code} -u $$C9USER:$$C9PASSWORD --basic http://localhost:8080) -ne 200 ]; then exit 1; fi"]
+CMD ["/bin/sh", "-c",  "if [ $(curl -L -o /dev/null -s -w %{http_code} -u $C9USER:$C9PASSWORD --basic http://localhost:8080) -ne 200 ]; then exit 1; fi"]

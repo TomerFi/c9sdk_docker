@@ -6,7 +6,7 @@ shellscripts
 .gitignore
 container_structure.yml
 Makefile
+README.md
 
 !LICENSE
-!README.md
 !VERSION
