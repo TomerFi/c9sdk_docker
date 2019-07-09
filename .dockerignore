@@ -1,0 +1,12 @@
+.git
+amd64
+armhf
+shellscripts
+.dockerignore
+.gitignore
+container_structure.yml
+Makefile
+
+!LICENSE
+!README.md
+!VERSION

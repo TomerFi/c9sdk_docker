@@ -1,0 +1,52 @@
+schemaVersion: "2.0.0"
+
+fileExistenceTests:
+  - name: "LICENSE shouldExist: true"
+    path: /workspace/LICENSE
+    shouldExist: true
+  - name: "VERSION shouldExist: true"
+    path: /workspace/VERSION
+    shouldExist: true
+
+fileContentTests:
+  - name: "LICENSE is MIT"
+    path: /workspace/LICENSE
+    expectedContents: ["MIT License.*"]
+
+metadataTest:
+  labels:
+    - key: "org.label-schema.build-date"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.name"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.description"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.url"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.vcs-url"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.version"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.schema-version"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.docker.cmd"
+      value: "."
+      isRegex: true
+    - key: "org.label-schema.docker.params"
+      value: "."
+      isRegex: true
+    - key: "license"
+      value: "MIT"
+    - key: "maintainer"
+      value: "."
+      isRegex: true
+  exposedPorts: ["8080"]
+  entrypoint: ["/bin/sh", "-c", "node /opt/c9sdk/server.js -p 8080 -w /workspace/ -l 0.0.0.0 -a $C9USER:$C9PASSWORD"]
+  workdir: "/workspace"
